@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan's Weekly Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Playpen Sans Hebrew', cursive;
+            background: white;
+            padding: 15px;
+            height: 100vh;
+        }
+
+        .container {
+            height: 100%;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: 40px 25px auto 1fr 1fr;
+            border: 2px solid white;
+            height: 100%;
+        }
+
+        .header-cell {
+            color: #333;
+            padding: 5px 8px;
+            text-align: center;
+            font-weight: 600;
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .header-row {
+            display: contents;
+        }
+
+        .corner-cell {
+            background: white;
+        }
+
+        .day-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .day-hebrew {
+            font-family: 'Playpen Sans Hebrew', cursive;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        /* Arrow space for current day marker */
+        .arrow-space {
+            background: white;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* Color strip at top */
+        .color-strip {
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+            border-bottom: 4px dashed white;
+            border-radius: 10px 10px 0 0;
+        }
+        .strip-sunday { background: #DCECE9; }
+        .strip-monday { background: #F0E2C3; }
+        .strip-tuesday { background: #D5E0D0; }
+        .strip-wednesday { background: #F2EAE0; }
+        .strip-thursday { background: #F6C7B3; }
+        .strip-friday { background: #C3DEDD; }
+        .strip-saturday { background: #82B2C0; }
+
+        .time-label {
+            background: white;
+            color: #333;
+            padding: 10px 5px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            border: 2px solid white;
+        }
+
+        .time-icon {
+            font-size: 1.8em;
+        }
+
+        .time-text-hebrew {
+            font-family: 'Playpen Sans Hebrew', cursive;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .schedule-cell {
+            padding: 8px;
+            border: 2px solid white;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .cell-icon {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boho-sun, .boho-moon {
+            width: 55px;
+            height: 55px;
+        }
+
+        /* Same color for entire column */
+        .cell-sunday { background: #DCECE9; }
+        .cell-monday { background: #F0E2C3; }
+        .cell-tuesday { background: #D5E0D0; }
+        .cell-wednesday { background: #F2EAE0; }
+        .cell-thursday { background: #F6C7B3; }
+        .cell-friday { background: #C3DEDD; }
+        .cell-saturday { background: #82B2C0; }
+
+        /* Playful morning/evening separator */
+        .morning-cell {
+            border-top: 4px dashed white;
+            border-bottom: 4px dashed white;
+        }
+
+        
+        @media print {
+            body {
+                padding: 5px;
+                height: 100vh;
+            }
+
+            .schedule-grid {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="schedule-grid">
+            <!-- Arrow Space Row (for marking current day) -->
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+            <div class="arrow-space"></div>
+
+            <!-- Color Strip Row -->
+            <div class="color-strip strip-sunday"></div>
+            <div class="color-strip strip-monday"></div>
+            <div class="color-strip strip-tuesday"></div>
+            <div class="color-strip strip-wednesday"></div>
+            <div class="color-strip strip-thursday"></div>
+            <div class="color-strip strip-friday"></div>
+            <div class="color-strip strip-saturday"></div>
+
+            <!-- Header Row (RTL: Sunday on right, Saturday on left) -->
+            <div class="header-cell day-header">ראשון</div>
+            <div class="header-cell day-header">שני</div>
+            <div class="header-cell day-header">שלישי</div>
+            <div class="header-cell day-header">רביעי</div>
+            <div class="header-cell day-header">חמישי</div>
+            <div class="header-cell day-header">שישי</div>
+            <div class="header-cell day-header">שבת</div>
+
+            <!-- Morning Row -->
+            <div class="schedule-cell cell-sunday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-monday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-tuesday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-wednesday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-thursday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-friday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+            <div class="schedule-cell cell-saturday morning-cell"><span class="cell-icon"><img class="boho-sun" src="sun_circle.png" alt="sun"></span></div>
+
+            <!-- Evening Row -->
+            <div class="schedule-cell cell-sunday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-monday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-tuesday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-wednesday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-thursday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-friday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+            <div class="schedule-cell cell-saturday"><span class="cell-icon"><img class="boho-moon" src="moon_circle.png" alt="moon"></span></div>
+        </div>
+    </div>
+</body>
+</html>

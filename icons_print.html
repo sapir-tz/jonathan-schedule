@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 1cm;
+            background: white;
+        }
+
+        .icons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .icons-grid img {
+            width: 5cm;
+            height: 5cm;
+            object-fit: contain;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .icons-grid img {
+                width: 5cm;
+                height: 5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="icons-grid">
+        <img src="icons/aba.png">
+        <img src="icons/savta.png">
+        <img src="icons/pugi.png">
+        <img src="icons/yama.png">
+        <img src="icons/luna.png">
+        <img src="icons/gina.png">
+        <img src="icons/yoga.png">
+        <img src="icons/hug_hadar.png">
+        <img src="icons/hayot.png">
+        <img src="icons/letzayer.png">
+        <img src="icons/sipur.png">
+        <img src="icons/miklachat.png">
+        <img src="icons/lishon.png">
+        <img src="icons/shabbat.png">
+        <img src="icons/theo.png">
+        <img src="icons/arrow.png" style="width: 4cm; height: 5cm;">
+    </div>
+</body>
+</html>
